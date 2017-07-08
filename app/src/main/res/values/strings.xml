@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BaseApp</string>
+    <string name="base_url">null</string>
+    <string name="fragment_base_processing">Processing</string>
+    <string name="progress_dialog_title">Загрузка</string>
+    <string name="progress_dialog_message">Подождите пожалуйста&#8230;</string>
+</resources>
