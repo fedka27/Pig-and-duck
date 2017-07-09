@@ -14,6 +14,7 @@ import app.meat.util.rx.RxSchedulersAbs;
 import app.meat.view.base.BaseActivity;
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public class UtilsModule {
@@ -28,6 +29,12 @@ public class UtilsModule {
     @Provides
     RxPermissions provideRxPermissions(BaseActivity baseActivity) {
         return new RxPermissions(baseActivity);
+    }
+
+    @Provides
+    @Singleton
+    CompositeDisposable provideCompositeDisposable(){
+        return new CompositeDisposable();
     }
 
     @Provides

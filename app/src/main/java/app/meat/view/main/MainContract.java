@@ -14,9 +14,12 @@ public interface MainContract {
         void hideProgressDialog();
 
         void setNews(List<News> list);
+
+        void openSettingsActivity();
     }
 
     interface Presenter extends BasePresenter<View> {
 
+        void settingsPressed();
     }
 }

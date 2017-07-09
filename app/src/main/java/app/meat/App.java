@@ -3,8 +3,6 @@ package app.meat;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import app.meat.injection.AppComponent;
 import app.meat.injection.AppModule;
 import app.meat.injection.ComponentProvider;
@@ -20,11 +18,6 @@ public class App extends MultiDexApplication {
         MultiDex.install(this);
         initComponentProvider();
         initPaper();
-        initNotificationService();
-    }
-
-    private void initNotificationService() {
-        FirebaseMessaging.getInstance().subscribeToTopic("all");
     }
 
     protected void initComponentProvider() {

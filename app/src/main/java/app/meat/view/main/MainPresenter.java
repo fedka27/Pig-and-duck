@@ -1,7 +1,5 @@
 package app.meat.view.main;
 
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import java.util.Collections;
 
 import app.meat.model.data.db.NewsFirebaseDB;
@@ -45,6 +43,11 @@ public class MainPresenter implements MainContract.Presenter {
                 })
                 .subscribe(newses -> view.setNews(newses),
                         Throwable::printStackTrace));
+    }
+
+    @Override
+    public void settingsPressed() {
+        view.openSettingsActivity();
     }
 
     @Override
