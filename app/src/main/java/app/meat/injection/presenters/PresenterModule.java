@@ -5,8 +5,10 @@ import app.meat.model.data.repository.CategoryRepository;
 import app.meat.util.rx.RxSchedulersAbs;
 import app.meat.view.main.MainContract;
 import app.meat.view.main.MainPresenter;
-import app.meat.view.setting.SettingsContract;
-import app.meat.view.setting.SettingsPresenter;
+import app.meat.view.main.news.NewsContract;
+import app.meat.view.main.news.NewsPresenter;
+import app.meat.view.main.setting.SettingsContract;
+import app.meat.view.main.setting.SettingsPresenter;
 import app.meat.view.splash.SplashContract;
 import app.meat.view.splash.SplashPresenter;
 import dagger.Module;
@@ -17,8 +19,13 @@ import io.reactivex.disposables.CompositeDisposable;
 public class PresenterModule {
 
     @Provides
-    MainContract.Presenter provideMainPresenter(NewsFirebaseDB newsFirebaseDB) {
-        return new MainPresenter(newsFirebaseDB);
+    NewsContract.Presenter provideNewsPresenter(NewsFirebaseDB newsFirebaseDB) {
+        return new NewsPresenter(newsFirebaseDB);
+    }
+
+    @Provides
+    MainContract.Presenter provideMainPresenter(CategoryRepository categoryRepository) {
+        return new MainPresenter(categoryRepository);
     }
 
     @Provides

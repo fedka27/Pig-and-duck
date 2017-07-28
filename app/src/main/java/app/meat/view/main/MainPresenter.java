@@ -1,23 +1,16 @@
 package app.meat.view.main;
 
-import java.util.Collections;
-
-import app.meat.model.data.db.NewsFirebaseDB;
-import app.meat.util.L;
-import io.reactivex.Observable;
-import io.reactivex.disposables.CompositeDisposable;
+import app.meat.model.data.repository.CategoryRepository;
 
 public class MainPresenter implements MainContract.Presenter {
     private static final String TAG = MainPresenter.class.getSimpleName();
     private MainContract.View view;
-    private NewsFirebaseDB newsFirebaseDB;
-    private CompositeDisposable compositeDisposable;
+    private CategoryRepository categoryRepository;
 
-    public MainPresenter(NewsFirebaseDB newsFirebaseDB) {
-        this.newsFirebaseDB = newsFirebaseDB;
-
-        this.compositeDisposable = new CompositeDisposable();
+    public MainPresenter(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
+
 
     @Override
     public void bindView(MainContract.View view) {
@@ -26,33 +19,25 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void onStart() {
-        view.showProgressDialog();
-        initFirebaseDB();
-    }
-
-    private void initFirebaseDB() {
-        compositeDisposable.add(newsFirebaseDB.getNews()
-                .doOnSubscribe(disposable -> view.showProgressDialog())
-                .doFinally(() -> view.hideProgressDialog())
-                .flatMap(Observable::fromIterable)
-                .doOnNext(news -> L.e(TAG, "List - " + news.toString()))
-                .toList()
-                .map(newses -> {
-                    Collections.reverse(newses);
-                    return newses;
-                })
-                .subscribe(newses -> view.setNews(newses),
-                        Throwable::printStackTrace));
+        if (!categoryRepository.isChanged()) {
+            view.checkSettingsTab();
+        } else {
+            view.checkNewsTab();
+        }
     }
 
     @Override
-    public void settingsPressed() {
-        view.openSettingsActivity();
+    public void onNewsPressed() {
+        view.openNewsFragment();
+    }
+
+    @Override
+    public void onSettingsPressed() {
+        view.openSettingsFragment();
     }
 
     @Override
     public void onStop() {
-        compositeDisposable.clear();
     }
 
 }

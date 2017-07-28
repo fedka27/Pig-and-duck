@@ -10,4 +10,6 @@
     <color name="color_category">#60292a</color>
     <color name="color_message">#393939</color>
     <color name="stroke_color">#005555</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 </resources>

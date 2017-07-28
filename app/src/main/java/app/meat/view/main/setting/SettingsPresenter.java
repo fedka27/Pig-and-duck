@@ -1,4 +1,4 @@
-package app.meat.view.setting;
+package app.meat.view.main.setting;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -42,16 +42,11 @@ public class SettingsPresenter implements SettingsContract.Presenter {
         categoryRepository.changeCategory(category, checked);
     }
 
-    public void subscribeTopic(String topic) {
+    private void subscribeTopic(String topic) {
         FirebaseMessaging.getInstance().subscribeToTopic(topic);
     }
 
-    public void unsubscribeTopic(String topic) {
+    private void unsubscribeTopic(String topic) {
         FirebaseMessaging.getInstance().unsubscribeFromTopic(topic);
-    }
-
-    @Override
-    public void onBackPressed() {
-        view.returnResult();
     }
 }

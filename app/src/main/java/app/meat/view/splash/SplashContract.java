@@ -8,12 +8,9 @@ public interface SplashContract {
     interface View extends BaseView<Presenter> {
 
         void openMainActivity();
-
-        void openSettingsActivity(int requestCode);
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void onActivityResult(int requestCode);
     }
 }

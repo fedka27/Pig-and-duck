@@ -3,7 +3,8 @@ package app.meat.injection.presenters;
 
 import app.meat.services.MessageService;
 import app.meat.view.main.MainActivity;
-import app.meat.view.setting.SettingsActivity;
+import app.meat.view.main.news.NewsFragment;
+import app.meat.view.main.setting.SettingsFragment;
 import app.meat.view.splash.SplashActivity;
 import dagger.Subcomponent;
 
@@ -14,7 +15,9 @@ public interface PresentersComponent {
 
     void inject(MessageService messageService);
 
-    void inject(SettingsActivity settingsActivity);
+    void inject(SettingsFragment settingsFragment);
 
     void inject(SplashActivity splashActivity);
+
+    void inject(NewsFragment newsFragment);
 }

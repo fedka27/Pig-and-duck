@@ -1,4 +1,4 @@
-package app.meat.view.setting;
+package app.meat.view.main.setting;
 
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
@@ -15,12 +15,11 @@ import app.meat.view.base.RecyclerRow;
 import butterknife.BindView;
 
 
-public class SettingAdapter extends BaseRecyclerAdapter {
+class SettingAdapter extends BaseRecyclerAdapter {
     @NonNull
     private SettingsContract.AdapterPresenter adapterPresenter;
-    private List<Category> categories;
 
-    public SettingAdapter(SettingsContract.AdapterPresenter adapterPresenter) {
+    SettingAdapter(@NonNull SettingsContract.AdapterPresenter adapterPresenter) {
         this.adapterPresenter = adapterPresenter;
 
         recyclerRow.addRow(new RecyclerRow.Row() {
@@ -47,7 +46,7 @@ public class SettingAdapter extends BaseRecyclerAdapter {
         });
     }
 
-    public void setCategories(List<Category> categories) {
+    void setCategories(List<Category> categories) {
         itemList.clear();
         itemList.addAll(categories);
         notifyDataSetChanged();
@@ -59,11 +58,11 @@ public class SettingAdapter extends BaseRecyclerAdapter {
         @BindView(R.id.category_checkbox)
         CheckBox checkBox;
 
-        public CategoryHolder(ViewGroup viewGroup) {
+        CategoryHolder(ViewGroup viewGroup) {
             super(viewGroup, R.layout.cell_category);
         }
 
-        public void bind(Category category){
+        void bind(Category category) {
             title.setText(category.getTitle());
             checkBox.setChecked(category.isCheck());
 

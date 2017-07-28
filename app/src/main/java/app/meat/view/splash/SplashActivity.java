@@ -11,7 +11,6 @@ import app.meat.R;
 import app.meat.injection.ComponentProvider;
 import app.meat.view.base.BaseActivity;
 import app.meat.view.main.MainActivity;
-import app.meat.view.setting.SettingsActivity;
 
 public class SplashActivity extends BaseActivity
         implements SplashContract.View {
@@ -52,10 +51,5 @@ public class SplashActivity extends BaseActivity
     @Override
     public void openMainActivity() {
         MainActivity.start(this);
-    }
-
-    @Override
-    public void openSettingsActivity(int requestCode) {
-        SettingsActivity.start(this);
     }
 }

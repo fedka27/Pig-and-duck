@@ -1,4 +1,4 @@
-package app.meat.view.main;
+package app.meat.view.main.news;
 
 import android.view.ViewGroup;
 import android.widget.TextView;
